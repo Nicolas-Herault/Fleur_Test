@@ -1,0 +1,37 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ns-server
+  labels:
+    name: ns-server
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ns-storage
+  labels:
+    name: ns-storage
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server-pod
+  namespace: ns-server
+  labels:
+    name: server-pod
+spec:
+  containers:
+  - name: server-pod
+    image: nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-pod
+  namespace: ns-storage
+  labels:
+    name: storage-pod
+spec:
+  containers:
+  - name: storage-pod
+    image: nginx
