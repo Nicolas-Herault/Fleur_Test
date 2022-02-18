@@ -25,7 +25,7 @@ We assume that we already have a Kubernetes cluster. If not, simply install mini
 
 To set the kubernetes environment, use this command: 
 ```
-kubectl apply -f yml/setup.yaml -f yml/config_map.yaml -f yml/volumes.yaml -f yml/deployment.yaml -f yml/service.yaml
+kubectl apply -f yaml/
 ```
 
 
