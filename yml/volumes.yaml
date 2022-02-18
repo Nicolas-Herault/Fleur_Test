@@ -1,36 +1,30 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: postgres-secret-config
-type: Opaque
-data:
-  password: cGFzc3dvcmQK
----
-apiVersion: v1
 kind: PersistentVolume
+apiVersion: v1
 metadata:
-  name: postgres-pv
+  name: postgres-pv-volume
   namespace: ns-storage
   labels:
     type: local
+    app: postgres
 spec:
   storageClassName: manual
   capacity:
     storage: 5Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
     path: "/mnt/data"
 ---
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
   name: postgres-pv-claim
-  namespace: ns-storage
+  labels:
+    app: postgres
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi
