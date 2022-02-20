@@ -12,11 +12,11 @@ The other namespace (ns-server) will run a python server with Flask to return th
 ### Docker Setup
 
 
-First, we need to log to docker with `docker login` and then build and push our Docker image with: 
+First, we need to build our Docker images and enable the use of local images with: 
 ```
-docker build -t our-postgres .
-docker tag our-postgres nicolasnanass/our-postgres
-docker push nicolasnanass/our-postgres
+docker build postgres/ -t our-postgres
+docker build flask_app/ -t flask-api
+eval $(minikube -p minikube docker-env)
 ``` 
 
 
