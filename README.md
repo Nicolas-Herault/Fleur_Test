@@ -31,7 +31,7 @@ kubectl apply -f yaml/
 ```
 
 
-We can use `kubectl get all` to verify that all our resources are created and ready
+We can use `kubectl get all -n [namespace]` to verify that all our resources are created and ready
 
 To delete resources if needed:
 ```
