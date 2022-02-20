@@ -1,0 +1,25 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ns-server
+  labels:
+    name: ns-server
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ns-storage
+  labels:
+    name: ns-storage
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: ns-storage
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: postgresdb
+  POSTGRES_USER: postgresadmin
+  POSTGRES_PASSWORD: one_mdp_2022

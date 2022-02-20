@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: storage-pod
+  namespace: ns-storage
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: our-postgres
   template:
     metadata:
       labels:
-        app: postgres
+        app: our-postgres
     spec:
       containers:
-        - name: postgres
-          image: our_postgres_db:latest
+        - name: our-postgres
+          image: "nicolasnanass/our-postgres:latest"
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
@@ -23,8 +24,8 @@ spec:
                 name: postgres-config
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgredb
+              name: postgres-pv-claim
       volumes:
-        - name: postgredb
+        - name: postgres-pv-claim
           persistentVolumeClaim:
             claimName: postgres-pv-claim
