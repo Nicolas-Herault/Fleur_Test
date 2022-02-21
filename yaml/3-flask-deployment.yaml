@@ -20,8 +20,13 @@ spec:
         image: nicolasnanass/flask-hello:latest
         imagePullPolicy: Never
         env:
-        - name: FLASK_ENV
-          value: "development"
+            - name: flaskapi-secrets
+              valueFrom:
+                secretKeyRef:
+                  name: flaskapi-secrets
+                  key: db-root-password
+            - name: db_name
+              value: flaskapi
 ---
 apiVersion: v1
 kind: Service

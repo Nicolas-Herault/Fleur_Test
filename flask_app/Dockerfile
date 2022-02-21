@@ -13,7 +13,7 @@ WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt --src /usr/local/src
 
-COPY . .
+COPY flask-hello.py /app/flask-hello.py
 
 EXPOSE 5000
 CMD [ "python", "flask-hello.py" ]

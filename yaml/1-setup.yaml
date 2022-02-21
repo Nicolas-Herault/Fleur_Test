@@ -21,8 +21,17 @@ metadata:
     app: postgres
 data:
   POSTGRES_DB: postgresdb
-  POSTGRES_USER: postgresadmin
-  POSTGRES_PASSWORD: one_mdp_2022
+  POSTGRES_USER: cG9zdGdyZXM=
+  POSTGRES_PASSWORD: b25lX21kcF8yMDIyCg==
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flaskapi-secrets
+  namespace: ns-server
+type: Opaque
+data:
+  db-root-password: TWluaXNrYXRlcjIxMDQ=
 ---
 kind: PersistentVolume
 apiVersion: v1
